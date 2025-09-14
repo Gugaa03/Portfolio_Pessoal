@@ -2,85 +2,101 @@ import { motion } from "framer-motion";
 import { FaPython, FaReact, FaCss3Alt, FaAndroid, FaCode, FaSuperscript, FaJsSquare } from "react-icons/fa";
 import { SiKotlin, SiTypescript, SiDotnet, SiSupabase, SiMysql, SiTailwindcss, SiNextdotjs } from "react-icons/si";
 
-const categories = [
-  {
-    name: "Frontend / Web",
-    skills: [
-      { name: "React", icon: <FaReact /> },
-      { name: "CSS", icon: <FaCss3Alt /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
-      { name: "Next.js", icon: <SiNextdotjs /> },
-      { name: "JavaScript", icon: <FaJsSquare /> }
-    ]
-  },
-  {
-    name: "Backend / Geral",
-    skills: [
-      { name: "ASP.NET", icon: <SiDotnet /> },
-      { name: "C#", icon: <SiDotnet /> },
-      { name: "Python", icon: <FaPython /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
-      { name: "Kotlin", icon: <SiKotlin /> }
-    ]
-  }
-];
+export default function Skills({ language }) {
+  const categories = [
+    {
+      namePT: "Frontend / Web", nameEN: "Frontend / Web",
+      skills: [
+        { name: "React", icon: <FaReact /> },
+        { name: "CSS", icon: <FaCss3Alt /> },
+        { name: "Tailwind", icon: <SiTailwindcss /> },
+        { name: "Next.js", icon: <SiNextdotjs /> },
+        { name: "JavaScript", icon: <FaJsSquare /> }
+      ]
+    },
+    {
+      namePT: "Backend / Geral", nameEN: "Backend / General",
+      skills: [
+        { name: "ASP.NET", icon: <SiDotnet /> },
+        { name: "C#", icon: <SiDotnet /> },
+        { name: "Python", icon: <FaPython /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
+        { name: "Kotlin", icon: <SiKotlin /> }
+      ]
+    }
+  ];
 
-const apps = [
-  { name: "VS Code", icon: <FaCode /> },
-  { name: "Visual Studio", icon: <FaCode /> },
-  { name: "SSMS / SQL", icon: <SiMysql /> },
-  { name: "Supabase", icon: <SiSupabase /> },
-  { name: "NetLogo", icon: <FaCode /> },
-  { name: "Android Studio", icon: <FaAndroid /> },
-  { name: "MATLAB", icon: <FaSuperscript /> }
-];
+  const apps = [
+    { name: "VS Code", icon: <FaCode /> },
+    { name: "Visual Studio", icon: <FaCode /> },
+    { name: "SSMS / SQL", icon: <SiMysql /> },
+    { name: "Supabase", icon: <SiSupabase /> },
+    { name: "NetLogo", icon: <FaCode /> },
+    { name: "Android Studio", icon: <FaAndroid /> },
+    { name: "MATLAB", icon: <FaSuperscript /> }
+  ];
 
-export default function Skills() {
+  // Variantes de animação contínua
+  const floating = {
+    animate: {
+      y: [0, -10, 0, 10, 0],
+      rotate: [0, 3, -3, 3, 0],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        repeatType: "loop",
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
-    <section className="py-12 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-8 text-center">Skills & Tecnologias</h2>
-      
-      {/* Linguagens por categoria */}
-      {categories.map((category, i) => (
-        <div key={i} className="mb-8">
-          <h3 className="text-xl font-semibold text-center mb-4">{category.name}</h3>
-          <div className="flex flex-wrap justify-center gap-6">
-            {category.skills.map((skill, j) => (
-              <motion.div
-                key={j}
-                className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg w-24 h-24 justify-center text-3xl text-cyan-400 hover:scale-105 transition-transform duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: j * 0.1 }}
-              >
-                {skill.icon}
-                <span className="text-sm mt-2 text-white text-center">{skill.name}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      ))}
+   <section className="py-12 px-6 max-w-6xl mx-auto">
+  <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+    {language === "pt" ? "Skills & Tecnologias" : "Skills & Technologies"}
+  </h2>
 
-      {/* Apps / Ferramentas */}
-      <div className="mb-8">
-        <h3 className="text-xl font-semibold text-center mb-4">Apps / Ferramentas</h3>
-        <div className="flex flex-wrap justify-center gap-6">
-          {apps.map((app, i) => (
-            <motion.div
-              key={i}
-              className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg w-24 h-24 justify-center text-3xl text-green-400 hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
-              {app.icon}
-              <span className="text-sm mt-2 text-white text-center">{app.name}</span>
-            </motion.div>
-          ))}
-        </div>
+  {categories.map((category, i) => (
+    <div key={i} className="mb-8">
+      <h3 className="text-xl font-semibold text-center mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        {language === "pt" ? category.namePT : category.nameEN}
+      </h3>
+      <div className="flex flex-wrap justify-center gap-6">
+        {category.skills.map((skill, j) => (
+          <motion.div
+            key={j}
+            className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg w-24 h-24 justify-center text-3xl text-cyan-400"
+            variants={floating}
+            animate="animate"
+            whileHover={{ scale: 1.2, boxShadow: "0px 10px 20px rgba(0,255,255,0.5)" }}
+          >
+            {skill.icon}
+            <span className="text-sm mt-2 text-white text-center">{skill.name}</span>
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </div>
+  ))}
+
+  <div className="mb-8">
+    <h3 className="text-xl font-semibold text-center mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+      {language === "pt" ? "Apps / Ferramentas" : "Apps / Tools"}
+    </h3>
+    <div className="flex flex-wrap justify-center gap-6">
+      {apps.map((app, i) => (
+        <motion.div
+          key={i}
+          className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg w-24 h-24 justify-center text-3xl text-green-400"
+          variants={floating}
+          animate="animate"
+          whileHover={{ scale: 1.2, boxShadow: "0px 10px 20px rgba(0,255,0,0.5)" }}
+        >
+          {app.icon}
+          <span className="text-sm mt-2 text-white text-center">{app.name}</span>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
   );
 }

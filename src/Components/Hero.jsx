@@ -1,15 +1,25 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-export default function Hero() {
-  const lines = [
-    "Engenheiro Informático",
-    "Criador de soluções e aplicações digitais",
-    "Desenvolvedor Frontend/Backend",
-    "Apaixonado por programação e inovação",
-    "Curioso e motivado a dominar novas ferramentas"
-  ];
+export default function Hero({ language, textColor = "text-white", subTextColor = "text-gray-300" }) {
+  const linesContent = {
+    pt: [
+      "Engenheiro Informático",
+      "Criador de soluções e aplicações digitais",
+      "Desenvolvedor Frontend/Backend",
+      "Apaixonado por programação e inovação",
+      "Curioso e motivado a dominar novas ferramentas"
+    ],
+    en: [
+      "Computer Engineer",
+      "Creator of digital solutions and applications",
+      "Frontend/Backend Developer",
+      "Passionate about programming and innovation",
+      "Curious and motivated to learn new tools"
+    ]
+  };
 
+  const lines = linesContent[language] || linesContent.pt;
   const [currentLine, setCurrentLine] = useState(0);
   const [typedLines, setTypedLines] = useState(Array(lines.length).fill(""));
   const typing = useRef(false);
@@ -17,7 +27,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (currentLine >= lines.length) {
-      setShowPhoto(true); // Mostra foto ao final
+      setShowPhoto(true);
       return;
     }
     if (typing.current) return;
@@ -38,11 +48,10 @@ export default function Hero() {
     };
 
     typeLine();
-  }, [currentLine]);
+  }, [currentLine, lines]);
 
   return (
-    <section className="flex flex-col items-center justify-center h-screen text-center px-6 bg-gray-900 text-white font-mono relative overflow-hidden">
-      {/* Foto animada */}
+    <section className="flex flex-col items-center justify-center h-screen text-center px-6 bg-transparent font-mono relative overflow-hidden">
       {showPhoto && (
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
@@ -51,22 +60,23 @@ export default function Hero() {
           className="mb-6"
         >
           <img
-            src="/path/to/sua-foto.jpg" // Substitua pelo caminho real
+            src="/public/1740424433599.jpg"
             alt="Gustavo Silva"
-            className="w-24 h-24 rounded-full border-4 border-cyan-400 object-cover shadow-lg mx-auto"
+            className="w-40 h-40 rounded-full border-4 border-cyan-400 object-cover shadow-lg mx-auto"
           />
         </motion.div>
       )}
 
-      {/* Título */}
-      <h1 className="text-5xl md:text-6xl font-extrabold mb-6 relative z-10">
-        Olá, sou o Gustavo Silva
+      <h1 className={`text-5xl md:text-6xl font-extrabold mb-6 relative z-10 ${textColor}`}>
+        {language === "pt" ? "Olá, sou o Gustavo Silva" : "Hi, I'm Gustavo Silva"}
       </h1>
 
-      {/* Linhas digitadas */}
-      <div className="flex flex-col gap-2 text-xl md:text-2xl text-gray-300 relative z-10">
+      <div className={`flex flex-col gap-2 text-xl md:text-2xl relative z-10 ${subTextColor}`}>
         {typedLines.map((line, i) => (
-          <span key={i}>{line}{i === currentLine ? "_" : ""}</span>
+          <span key={i}>
+            {line}
+            {i === currentLine ? "_" : ""}
+          </span>
         ))}
       </div>
     </section>
