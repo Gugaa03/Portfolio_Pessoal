@@ -6,7 +6,7 @@ export default function AboutMe({ language }) {
       title: "Sobre Mim",
       paragraphs: [
         "Sou o Gustavo Silva, um engenheiro informático apaixonado por tecnologia, programação e inovação. 🚀 Tenho experiência em desenvolvimento Frontend e Backend, na criação de aplicações web e móveis.",
-        "Destaco-me por ser curioso e motivado a aprender novas ferramentas e linguagens. Gosto de resolver problemas com código e transformar ideias em soluções digitais de impacto. 💡"
+        "Destaco-me por ser curioso e motivado em aprender novas ferramentas e linguagens. Gosto de resolver problemas com código e transformar ideias em soluções digitais. 💡"
       ]
     },
     en: {
