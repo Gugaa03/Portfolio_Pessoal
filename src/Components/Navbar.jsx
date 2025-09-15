@@ -40,7 +40,7 @@ export default function Navbar({ language }) {
             {language === "pt" ? "Skills" : "Skills"}
           </button>
           <button onClick={() => scrollToSection("contact")} className="hover:text-cyan-400 transition">
-            {language === "pt" ? "Contato" : "Contact"}
+            {language === "pt" ? "Contacto" : "Contact"}
           </button>
 
           <a
