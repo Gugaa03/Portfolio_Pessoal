@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 
-export default function Navbar({ language, toggleLanguage }) {
+export default function Navbar({ language }) {
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const changeLanguage = (newLang) => {
+    localStorage.setItem("heroLanguage", newLang); // salva idioma
+    window.location.reload(); // full reset
   };
 
   return (
@@ -16,7 +19,6 @@ export default function Navbar({ language, toggleLanguage }) {
       className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-md z-50"
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo / Nome */}
         <h1
           onClick={() => scrollToSection("hero")}
           className="text-2xl font-bold cursor-pointer hover:text-cyan-400 transition"
@@ -24,7 +26,6 @@ export default function Navbar({ language, toggleLanguage }) {
           Gustavo Silva
         </h1>
 
-        {/* Links */}
         <div className="flex items-center gap-6">
           <button onClick={() => scrollToSection("about")} className="hover:text-cyan-400 transition">
             {language === "pt" ? "Sobre Mim" : "About Me"}
@@ -42,7 +43,6 @@ export default function Navbar({ language, toggleLanguage }) {
             {language === "pt" ? "Contato" : "Contact"}
           </button>
 
-          {/* Download CV */}
           <a
             href="/CV_Gustavo.pdf"
             download
@@ -51,16 +51,15 @@ export default function Navbar({ language, toggleLanguage }) {
             {language === "pt" ? "Download CV" : "Download CV"}
           </a>
 
-          {/* Bandeiras de idioma */}
           <div className="flex gap-2 ml-4 text-xl cursor-pointer">
             <span
-              onClick={() => language !== "pt" && toggleLanguage()}
+              onClick={() => language !== "pt" && changeLanguage("pt")}
               className={language === "pt" ? "opacity-100" : "opacity-50 hover:opacity-100 transition"}
             >
               🇵🇹
             </span>
             <span
-              onClick={() => language !== "en" && toggleLanguage()}
+              onClick={() => language !== "en" && changeLanguage("en")}
               className={language === "en" ? "opacity-100" : "opacity-50 hover:opacity-100 transition"}
             >
               🇬🇧

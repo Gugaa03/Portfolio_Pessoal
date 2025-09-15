@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-export default function Hero({ language, textColor = "text-white", subTextColor = "text-gray-300" }) {
+export default function Hero({ language: initialLanguage, textColor = "text-white", subTextColor = "text-gray-300" }) {
   const linesContent = {
     pt: [
       "Engenheiro Informático",
@@ -19,11 +19,15 @@ export default function Hero({ language, textColor = "text-white", subTextColor 
     ]
   };
 
+  const [language, setLanguage] = useState(() => {
+    return typeof window !== "undefined" ? localStorage.getItem("heroLanguage") || initialLanguage : initialLanguage;
+  });
+
   const lines = linesContent[language] || linesContent.pt;
-  const [currentLine, setCurrentLine] = useState(0);
   const [typedLines, setTypedLines] = useState(Array(lines.length).fill(""));
-  const typing = useRef(false);
+  const [currentLine, setCurrentLine] = useState(0);
   const [showPhoto, setShowPhoto] = useState(false);
+  const typing = useRef(false);
 
   useEffect(() => {
     if (currentLine >= lines.length) {
@@ -75,7 +79,7 @@ export default function Hero({ language, textColor = "text-white", subTextColor 
         {typedLines.map((line, i) => (
           <span key={i}>
             {line}
-            {i === currentLine ? "_" : ""}
+            {i === currentLine && currentLine < lines.length ? "_" : ""}
           </span>
         ))}
       </div>

@@ -36,67 +36,59 @@ export default function Skills({ language }) {
     { name: "MATLAB", icon: <FaSuperscript /> }
   ];
 
-  // Variantes de animação contínua
-  const floating = {
-    animate: {
-      y: [0, -10, 0, 10, 0],
-      rotate: [0, 3, -3, 3, 0],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        repeatType: "loop",
-        ease: "easeInOut"
-      }
-    }
+  // Animação única ao entrar na viewport
+  const scrollAnimation = {
+    initial: { y: 20, opacity: 0, rotate: 0 },
+    whileInView: { y: 0, opacity: 1, rotate: 0 },
+    transition: { duration: 0.6, ease: "easeOut" },
+    viewport: { once: true }
   };
 
   return (
-   <section className="py-12 px-6 max-w-6xl mx-auto">
-  <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-    {language === "pt" ? "Skills & Tecnologias" : "Skills & Technologies"}
-  </h2>
+    <section className="py-12 px-6 max-w-6xl mx-auto">
+      <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        {language === "pt" ? "Skills & Tecnologias" : "Skills & Technologies"}
+      </h2>
 
-  {categories.map((category, i) => (
-    <div key={i} className="mb-8">
-      <h3 className="text-xl font-semibold text-center mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-        {language === "pt" ? category.namePT : category.nameEN}
-      </h3>
-      <div className="flex flex-wrap justify-center gap-6">
-        {category.skills.map((skill, j) => (
-          <motion.div
-            key={j}
-            className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg w-24 h-24 justify-center text-3xl text-cyan-400"
-            variants={floating}
-            animate="animate"
-            whileHover={{ scale: 1.2, boxShadow: "0px 10px 20px rgba(0,255,255,0.5)" }}
-          >
-            {skill.icon}
-            <span className="text-sm mt-2 text-white text-center">{skill.name}</span>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  ))}
-
-  <div className="mb-8">
-    <h3 className="text-xl font-semibold text-center mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-      {language === "pt" ? "Apps / Ferramentas" : "Apps / Tools"}
-    </h3>
-    <div className="flex flex-wrap justify-center gap-6">
-      {apps.map((app, i) => (
-        <motion.div
-          key={i}
-          className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg w-24 h-24 justify-center text-3xl text-green-400"
-          variants={floating}
-          animate="animate"
-          whileHover={{ scale: 1.2, boxShadow: "0px 10px 20px rgba(0,255,0,0.5)" }}
-        >
-          {app.icon}
-          <span className="text-sm mt-2 text-white text-center">{app.name}</span>
-        </motion.div>
+      {categories.map((category, i) => (
+        <div key={i} className="mb-8">
+          <h3 className="text-xl font-semibold text-center mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            {language === "pt" ? category.namePT : category.nameEN}
+          </h3>
+          <div className="flex flex-wrap justify-center gap-6">
+            {category.skills.map((skill, j) => (
+              <motion.div
+                key={j}
+                className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg w-24 h-24 justify-center text-3xl text-cyan-400"
+                {...scrollAnimation}
+                whileHover={{ scale: 1.2, boxShadow: "0px 10px 20px rgba(0,255,255,0.5)" }}
+              >
+                {skill.icon}
+                <span className="text-sm mt-2 text-white text-center">{skill.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       ))}
-    </div>
-  </div>
-</section>
+
+      <div className="mb-8">
+        <h3 className="text-xl font-semibold text-center mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+          {language === "pt" ? "Apps / Ferramentas" : "Apps / Tools"}
+        </h3>
+        <div className="flex flex-wrap justify-center gap-6">
+          {apps.map((app, i) => (
+            <motion.div
+              key={i}
+              className="flex flex-col items-center bg-gray-800 p-4 rounded-lg shadow-lg w-24 h-24 justify-center text-3xl text-green-400"
+              {...scrollAnimation}
+              whileHover={{ scale: 1.2, boxShadow: "0px 10px 20px rgba(0,255,0,0.5)" }}
+            >
+              {app.icon}
+              <span className="text-sm mt-2 text-white text-center">{app.name}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
