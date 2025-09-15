@@ -5,8 +5,9 @@ export default function EducationExperience({ language, textColor = "text-white"
   const content = {
     pt: {
       education: [
-        { title: "ESCOLA SECUNDÁRIA DE SEIA", subtitle: "Ciências e Tecnologias", date: "2013 - 2018" },
-        { title: "CONSERVATÓRIO DE MÚSICA DE SEIA", subtitle: "Ensino Elementar", date: "2018 - 2021" },
+        { title: "Agrupamento Escolas Guilherme Correia de Carvalho", subtitle: "Ensino Elementar", date: "2013 - 2018" },
+        { title: "CONSERVATÓRIO DE MÚSICA DE SEIA", subtitle: "Educação Musical", date: "2013 - 2018" },
+        { title: "ESCOLA SECUNDÁRIA DE SEIA", subtitle: "Ciências e Tecnologias", date: "2018 - 2021" },
         { title: "UNIVERSIDADE DE TRÁS-OS-MONTES E ALTO DOURO", subtitle: "Licenciatura em Engenharia Informática", date: "2021 - 2025" }
       ],
       experience: [
@@ -17,8 +18,9 @@ export default function EducationExperience({ language, textColor = "text-white"
     },
     en: {
       education: [
-        { title: "ESCOLA SECUNDÁRIA DE SEIA", subtitle: "Science and Technology", date: "2013 - 2018" },
-        { title: "CONSERVATÓRIO DE MÚSICA DE SEIA", subtitle: "Elementary Education", date: "2018 - 2021" },
+        { title: "Agrupamento Escolas Guilherme Correia de Carvalho", subtitle: "Elementary Education", date: "2013 - 2018" },
+        { title: "CONSERVATÓRIO DE MÚSICA DE SEIA", subtitle: "Music Education", date: "2013 - 2018" },
+        { title: "ESCOLA SECUNDÁRIA DE SEIA", subtitle: "Science and Technology", date: "2018 - 2021" },
         { title: "UNIVERSIDADE DE TRÁS-OS-MONTES E ALTO DOURO", subtitle: "Bachelor's Degree in Computer Engineering", date: "2021 - 2025" }
       ],
       experience: [
