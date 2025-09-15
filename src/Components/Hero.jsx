@@ -60,7 +60,7 @@ export default function Hero({ language, textColor = "text-white", subTextColor 
           className="mb-6"
         >
           <img
-            src="/public/1740424433599.jpg"
+            src="/1740424433599.jpg"
             alt="Gustavo Silva"
             className="w-40 h-40 rounded-full border-4 border-cyan-400 object-cover shadow-lg mx-auto"
           />
