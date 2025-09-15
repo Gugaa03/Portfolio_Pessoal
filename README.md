@@ -1,12 +1,80 @@
-# React + Vite
+# 🌐 Portfolio - Gustavo Silva
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o meu portfólio pessoal, desenvolvido em **React + Vite** com suporte a **dark mode**, **internacionalização (PT/EN)** e animações fluidas com **Framer Motion**.  
 
-Currently, two official plugins are available:
+O objetivo do projeto é apresentar as minhas **skills**, **experiência académica**, **projetos** e **formas de contato** de uma forma moderna e interativa.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ⚡ [Vite](https://vitejs.dev/) — build rápido e leve  
+- ⚛️ [React](https://react.dev/) — biblioteca principal  
+- 🎨 [TailwindCSS](https://tailwindcss.com/) — estilização responsiva  
+- 🎭 [Framer Motion](https://www.framer.com/motion/) — animações  
+- 🌍 **Internacionalização** (Português 🇵🇹 e Inglês 🇬🇧)  
+- 🌙 **Dark/Light Mode**  
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+src/
+├── Components/
+│   ├── Navbar.jsx
+│   ├── Hero.jsx
+│   ├── AboutMe.jsx
+│   ├── EducationExperience.jsx
+│   ├── Projects.jsx
+│   ├── Skills.jsx
+│   ├── Contact.jsx
+│   ├── Footer.jsx
+│   └── EmailIcon.jsx
+│   └── BackgroundAnimation.jsx 
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## ⚙️ Funcionalidades
+
+- 🖥️ **Navbar fixa** com scroll suave  
+- 🙋 **Secção Hero** com efeito de digitação e foto animada  
+- 📖 **Página em PT/EN  
+- 🎓 **Educação & Experiência**  
+- 💻 **Projetos** destacados  
+- 🛠️ **Skills** organizadas por categorias com efeitos interativos  
+- 📬 **Formulário de contato**  
+- 🌑 **Dark/Light mode** com toggle  
+- 🌍 **Troca de idioma (PT ↔ EN)** salva em `localStorage`  
+
+---
+
+## 📦 Instalação
+
+```bash
+# Clonar o repositório
+git clone https://github.com/teu-Gugaa03/Portfolio_Pessoal.git
+
+# Entrar no diretório
+cd portfolio
+
+# Instalar dependências
+npm install
+
+# Rodar em modo desenvolvimento
+npm run dev
+```
+
+---
+
+## 🔨 Build para Produção
+
+```bash
+npm run build
+npm run preview
+
+
+Este projeto é de uso pessoal, mas podes usá-lo como inspiração para o teu próprio portfólio.
