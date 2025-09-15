@@ -21,7 +21,7 @@ export default function AboutMe({ language }) {
   const { title, paragraphs } = content[language] || content.pt;
 
   return (
-    <section id="about" className="relative py-20 px-6 overflow-hidden bg-gray-900 text-white">
+    <section id="about" className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
       {/* Fundo animado com "bolhas" */}
       <div className="absolute inset-0 -z-10">
         <motion.div
