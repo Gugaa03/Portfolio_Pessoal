@@ -21,7 +21,10 @@ export default function AboutMe({ language }) {
   const { title, paragraphs } = content[language] || content.pt;
 
   return (
-    <section id="about" className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+    <section
+      id="about"
+      className="scroll-mt-24 text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+    >
       {/* Fundo animado com "bolhas" */}
       <div className="absolute inset-0 -z-10">
         <motion.div
@@ -50,9 +53,7 @@ export default function AboutMe({ language }) {
         {paragraphs.map((p, i) => (
           <p key={i} className="text-lg text-gray-300 leading-relaxed mt-4">
             {p.split(" ").map((word, idx) => (
-              <span key={idx}>
-                {word}{" "}
-              </span>
+              <span key={idx}>{word} </span>
             ))}
           </p>
         ))}
