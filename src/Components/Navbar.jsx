@@ -2,10 +2,17 @@ import { motion } from "framer-motion";
 
 export default function Navbar({ language }) {
   const scrollToSection = (id) => {
+    const navbar = document.querySelector("nav");
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+    if (id === "top") {
+      // Scroll para o topo da página
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     const section = document.getElementById(id);
     if (section) {
-      const navbar = document.querySelector("nav");
-      const navbarHeight = navbar ? navbar.offsetHeight : 0;
       const top = section.getBoundingClientRect().top + window.scrollY - navbarHeight;
       window.scrollTo({ top, behavior: "smooth" });
     }
@@ -25,7 +32,7 @@ export default function Navbar({ language }) {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <h1
-          onClick={() => scrollToSection("hero")}
+          onClick={() => scrollToSection("top")} // agora vai para o topo
           className="text-2xl font-bold cursor-pointer hover:text-cyan-400 transition"
         >
           Gustavo Silva
