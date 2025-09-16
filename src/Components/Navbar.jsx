@@ -3,12 +3,17 @@ import { motion } from "framer-motion";
 export default function Navbar({ language }) {
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+    if (section) {
+      const navbar = document.querySelector("nav");
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const top = section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
   };
 
   const changeLanguage = (newLang) => {
-    localStorage.setItem("heroLanguage", newLang); // salva idioma
-    window.location.reload(); // full reset
+    localStorage.setItem("heroLanguage", newLang);
+    window.location.reload();
   };
 
   return (

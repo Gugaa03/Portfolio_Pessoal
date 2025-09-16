@@ -36,7 +36,6 @@ export default function Skills({ language }) {
     { name: "MATLAB", icon: <FaSuperscript /> }
   ];
 
-  // Animação única ao entrar na viewport
   const scrollAnimation = {
     initial: { y: 20, opacity: 0, rotate: 0 },
     whileInView: { y: 0, opacity: 1, rotate: 0 },
@@ -45,7 +44,7 @@ export default function Skills({ language }) {
   };
 
   return (
-    <section className="py-12 px-6 max-w-6xl mx-auto">
+    <section id="skills" className="scroll-mt-24 py-12 px-6 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
         {language === "pt" ? "Skills & Tecnologias" : "Skills & Technologies"}
       </h2>

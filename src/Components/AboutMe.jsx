@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 export default function AboutMe({ language }) {
   const content = {
     pt: {
@@ -25,39 +23,15 @@ export default function AboutMe({ language }) {
       id="about"
       className="scroll-mt-24 text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
     >
-      {/* Fundo animado com "bolhas" */}
-      <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"
-          initial={{ x: -200, y: -200 }}
-          animate={{ x: [0, 100, -100, 0], y: [0, -100, 100, 0] }}
-          transition={{ repeat: Infinity, duration: 20 }}
-        />
-        <motion.div
-          className="absolute w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"
-          initial={{ x: 200, y: 200 }}
-          animate={{ x: [0, -150, 150, 0], y: [0, 150, -150, 0] }}
-          transition={{ repeat: Infinity, duration: 25 }}
-        />
-      </div>
-
-      {/* Conteúdo */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto text-center"
-      >
+      {/* Conteúdo estático */}
+      <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-6">{title}</h2>
         {paragraphs.map((p, i) => (
           <p key={i} className="text-lg text-gray-300 leading-relaxed mt-4">
-            {p.split(" ").map((word, idx) => (
-              <span key={idx}>{word} </span>
-            ))}
+            {p}
           </p>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
