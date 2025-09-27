@@ -39,9 +39,9 @@ export default function Projects({ language }) {
     },
     {
       title: "GamersClub",
-     descriptionPT: "Loja de jogos online construída com Next.js, Supabase e Tailwind CSS. Permite explorar jogos, adicionar ao carrinho e realizar compras. ⚠️ Ainda em desenvolvimento, algumas funcionalidades podem não estar completas ou indisponíveis.",
-      descriptionEN: "Online game store built with Next.js, Supabase, and Tailwind CSS. Allows users to explore games, add to cart, and make purchases. ⚠️Still in development; some features are incomplete or unavailable.",
-      lang: "Next.js, Supabase, Tailwind CSS",
+     descriptionPT: "Loja de jogos online construída com Next.js, Supabase e Tailwind CSS. Permite explorar jogos, adicionar ao carrinho e realizar compras.",
+      descriptionEN: "Online game store built with Next.js, Supabase, and Tailwind CSS. Allows users to explore games, add to cart, and make purchases.",
+      lang: "Next.js, Supabase, Tailwind CSS, React",
       link: "https://github.com/Gugaa03/GamersClub",
       inDevelopment: true
     }
