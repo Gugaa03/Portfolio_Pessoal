@@ -36,6 +36,14 @@ export default function Projects({ language }) {
       descriptionEN: "Professional barbershop management system with Supabase authentication, frontend developed in React and TailwindCSS, including comprehensive scheduling and barber registration functionalities.",
       lang: "TypeScript, Supabase, React, TailwindCSS",
       link: "https://github.com/Gugaa03/Barbearia"
+    },
+    {
+      title: "GamersClub",
+     descriptionPT: "Loja de jogos online construída com Next.js, Supabase e Tailwind CSS. Permite explorar jogos, adicionar ao carrinho e realizar compras. ⚠️ Ainda em desenvolvimento, algumas funcionalidades podem não estar completas ou indisponíveis.",
+      descriptionEN: "Online game store built with Next.js, Supabase, and Tailwind CSS. Allows users to explore games, add to cart, and make purchases. ⚠️Still in development; some features are incomplete or unavailable.",
+      lang: "Next.js, Supabase, Tailwind CSS",
+      link: "https://github.com/Gugaa03/GamersClub",
+      inDevelopment: true
     }
   ];
 
@@ -50,7 +58,7 @@ export default function Projects({ language }) {
             key={i}
             href={proj.link}
             target="_blank"
-            className="bg-gray-800 p-6 rounded-lg shadow-lg cursor-pointer"
+            className="relative bg-gray-800 p-6 rounded-lg shadow-lg cursor-pointer overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{
@@ -62,6 +70,13 @@ export default function Projects({ language }) {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.2 }}
           >
+            {/* Badge de Desenvolvimento */}
+            {proj.inDevelopment && (
+              <span className="absolute top-3 right-3 bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg">
+                ⚠️ {language === "pt" ? "Em Desenvolvimento" : "In Development"}
+              </span>
+            )}
+
             <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               {proj.title}
             </h3>

@@ -6,14 +6,14 @@ export default function Hero({ language: initialLanguage, textColor = "text-whit
     pt: [
       "Engenheiro Informático",
       "Criador de soluções e aplicações digitais",
-      "Desenvolvedor Frontend/Backend",
+      "Desenvolvedor Fullstack",
       "Apaixonado por programação e inovação",
       "Curioso e motivado a dominar novas ferramentas"
     ],
     en: [
       "Computer Engineer",
       "Creator of digital solutions and applications",
-      "Frontend/Backend Developer",
+      "Fullstack Developer",
       "Passionate about programming and innovation",
       "Curious and motivated to learn new tools"
     ]
