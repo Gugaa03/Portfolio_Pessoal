@@ -1,12 +1,12 @@
+"use client";
 import { motion } from "framer-motion";
 
-export default function Navbar({ language }) {
+export default function Navbar({ language, toggleTheme, darkMode }) {
   const scrollToSection = (id) => {
     const navbar = document.querySelector("nav");
     const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
     if (id === "top") {
-      // Scroll para o topo da página
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
@@ -18,9 +18,11 @@ export default function Navbar({ language }) {
     }
   };
 
-  const changeLanguage = (newLang) => {
-    localStorage.setItem("heroLanguage", newLang);
-    window.location.reload();
+  const handleLanguageChange = (newLang) => {
+    if (language !== newLang) {
+      localStorage.setItem("heroLanguage", newLang);
+      window.location.reload();
+    }
   };
 
   return (
@@ -28,17 +30,19 @@ export default function Navbar({ language }) {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-md z-50"
+      className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-md z-[9999]"
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap justify-between items-center gap-2">
+        {/* Logo / Nome */}
         <h1
-          onClick={() => scrollToSection("top")} // agora vai para o topo
+          onClick={() => scrollToSection("top")}
           className="text-2xl font-bold cursor-pointer hover:text-cyan-400 transition"
         >
           Gustavo Silva
         </h1>
 
-        <div className="flex items-center gap-6">
+        {/* Seções principais */}
+        <div className="flex flex-wrap items-center gap-2 sm:gap-6 mt-2 sm:mt-0">
           <button onClick={() => scrollToSection("about")} className="hover:text-cyan-400 transition">
             {language === "pt" ? "Sobre Mim" : "About Me"}
           </button>
@@ -54,7 +58,20 @@ export default function Navbar({ language }) {
           <button onClick={() => scrollToSection("contact")} className="hover:text-cyan-400 transition">
             {language === "pt" ? "Contacto" : "Contact"}
           </button>
+        </div>
 
+        {/* Funcionalidades secundárias */}
+        <div className="flex items-center gap-2 ml-2">
+          {/* Dark Mode */}
+          <button
+            onClick={toggleTheme}
+            className="bg-cyan-500 hover:bg-cyan-400 text-white px-3 py-2 rounded-full shadow transition"
+            title={darkMode ? "Modo claro" : "Modo escuro"}
+          >
+            {darkMode ? "☀️" : "🌙"}
+          </button>
+
+          {/* Download CV */}
           <a
             href="/CV_Gustavo.pdf"
             download
@@ -63,20 +80,25 @@ export default function Navbar({ language }) {
             {language === "pt" ? "Download CV" : "Download CV"}
           </a>
 
-          <div className="flex gap-2 ml-4 text-xl cursor-pointer">
-            <span
-              onClick={() => language !== "pt" && changeLanguage("pt")}
-              className={language === "pt" ? "opacity-100" : "opacity-50 hover:opacity-100 transition"}
-            >
-              🇵🇹
-            </span>
-            <span
-              onClick={() => language !== "en" && changeLanguage("en")}
-              className={language === "en" ? "opacity-100" : "opacity-50 hover:opacity-100 transition"}
-            >
-              🇬🇧
-            </span>
-          </div>
+          {/* Bandeiras */}
+          <img
+            src="https://flagcdn.com/16x12/pt.png"
+            srcSet="https://flagcdn.com/32x24/pt.png 2x, https://flagcdn.com/48x36/pt.png 3x"
+            width="16"
+            height="12"
+            alt="Portugal"
+            className={`cursor-pointer rounded ${language === "pt" ? "ring-2 ring-cyan-500" : ""}`}
+            onClick={() => handleLanguageChange("pt")}
+          />
+          <img
+            src="https://flagcdn.com/16x12/gb.png"
+            srcSet="https://flagcdn.com/32x24/gb.png 2x, https://flagcdn.com/48x36/gb.png 3x"
+            width="16"
+            height="12"
+            alt="United Kingdom"
+            className={`cursor-pointer rounded ${language === "en" ? "ring-2 ring-cyan-500" : ""}`}
+            onClick={() => handleLanguageChange("en")}
+          />
         </div>
       </div>
     </motion.nav>
